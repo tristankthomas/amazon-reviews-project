@@ -1,12 +1,13 @@
 import pandas as pd
 import json
 
-def helloworld():
-    print("helloworld")
 def task1():
     data = pd.read_csv('dataset.csv', index_col='ID')
+    # number of products and number of categories
     num_prods = len(data)
     categories = len(data.groupby(['category']))
+
+    # defining json string and dumping to file
     json_str = """
     {
       "Number of Products:": %d,
@@ -14,9 +15,8 @@ def task1():
     } 
     """ % (num_prods, categories)
     json.dump(json.loads(json_str), open("task1.json", 'w'))
+    
     return
-    # output_dict = {"Number of Products:": num_prods, "Number of Categories:": categories}
-    # output = pd.DataFrame(output_dict, index = [0])
-    # json_str = output.to_json()
+
     
     

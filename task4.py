@@ -5,14 +5,18 @@ from task2 import task2
 from task3 import task3
 
 def task4():
+    # loads in task 2 output
     avg_score = task2()
     avg_score_pet = avg_score.loc[avg_score['category'] == 'Pet Supplies']
-    
+
+    # loads in task 3 output
     avg_cost = task3()
     avg_cost_pet = avg_cost.loc[avg_score['category'] == 'Pet Supplies']
-    data = avg_cost_pet.copy().assign(average_score = avg_score_pet['average_score'])
     
+    data = avg_cost_pet.copy().assign(average_score = avg_score_pet['average_score'])
     data = data.sort_values(by=['average_cost'])
+
+    # plots average cost against average score
     fig, ax = plt.subplots()
     fig.set_figheight(7)
     fig.set_figwidth(15)
@@ -23,10 +27,12 @@ def task4():
     ax.set_title('Average review score for Pet Supply products against cost', fontsize=18)
     plt.xticks(fontsize=12)
     plt.yticks(fontsize=12)
-    # trendline
+    
+    # plots trendline
     z = np.polyfit(data['average_cost'], data['average_score'], 1)
     p = np.poly1d(z)
     ax.plot(data['average_cost'], p(data['average_cost']), linestyle='dashed')
-    plt.savefig('task4.png')
+    plt.savefig('task4.png', dpi=200)
     plt.close()
+    
     return
