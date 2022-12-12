@@ -17,7 +17,7 @@ This section pre-processes the review bodies of each review by:
 
 The bi-grams for each review are then represented in a JSON file.
 ### **Task 7**
-The aim of this task was to discover which bi-grams from task 6 are the most indicative of positive and negative reviews using the log-odds ratio metric, which involves first finding the probability that a bi-gram is in a positive or negative review using $p_b(b) = \frac{\#\ positive\ reviews\ containing\ bigram\ b}{\#\ positive\ reviews} $ where b is a bigram. This can then be converted to odds using $o_p(b) = \frac{p_b(b)}{1 - p_b(b)}$. Computing this for each bi-gram in the data yields $o_p(b)$ and $o_n(b)$ which can then be converted to a ratio using $o_r(b) = \frac{o_p(b)}{o_n(b)}$. Finally the log-odds ratio is generated using $log_{10}{(o_r(b))}$.
+The aim of this task was to discover which bi-grams from task 6 are the most indicative of positive and negative reviews using the log-odds ratio metric, which involves first finding the probability that a bi-gram is in a positive or negative review using $p_b(b) = \frac{num\ positive\ reviews\ containing\ bigram\ b}{num\ positive\ reviews}$ where b is a bigram. This can then be converted to odds using $o_p(b) = \frac{p_b(b)}{1 - p_b(b)}$. Computing this for each bi-gram in the data yields $o_p(b)$ and $o_n(b)$ which can then be converted to a ratio using $o_r(b) = \frac{o_p(b)}{o_n(b)}$. Finally the log-odds ratio is generated using $log_{10}{(o_r(b))}$.
 
 This information is then used to generate the two plots, one showing the frequency distribution of log-odds ratios and the other showing the top 10 most and least indicative bi-grams.
 
